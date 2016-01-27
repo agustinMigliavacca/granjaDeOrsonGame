@@ -9,7 +9,7 @@ object granjero {
 	 * Este método debe retornar la cantidad de oro que posee el granjero. 
 	 */	
 	method oro() {
-		return throw new MethodNotImplemented("oro", this)
+		return oro
 	}
 	
 	
