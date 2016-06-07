@@ -1,26 +1,26 @@
 import exceptions.*
 
 object granero { 
-	val imagen = "granero.png"
-	val posicion = new Position(9,9)
+	const imagen = "granero.png"
+	const posicion = new Position(9,9)
 	var cultivo
 	
 	method planta(_cultivo) {
-//		throw new MethodNotImplemented("planta", this)
-		this.borde().forEach{ pos =>
+//		throw new MethodNotImplemented("planta", self)
+		self.borde().forEach{ pos =>
 			pos.drawElement(_cultivo)
 		}
 		cultivo = _cultivo
 	}
 	
 	method rega() { 
-//		throw new MethodNotImplemented("rega", this)
+//		throw new MethodNotImplemented("rega", self)
 		cultivo.crece()
 	}
 
 	method cosecha() { 
-//		throw new MethodNotImplemented("cosecha", this)
-		this.borde().forEach{ _ => cultivo.cosechate() }
+//		throw new MethodNotImplemented("cosecha", self)
+		self.borde().forEach{ _ => cultivo.cosechate() }
 	}
 	
 	method borde() {

@@ -27,17 +27,17 @@ class Cultivo {
 ///////////////////////////         CÓDIGO BASE           ////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 	
-	method crece() { etapa.crece(this) }
+	method crece() { etapa.crece(self) }
 	
 	method cosechate() {
-		granjero.sumaOro(etapa.oroPorCosecha(this))
-		wgame.removeVisual(this)
+		granjero.sumaOro(etapa.oroPorCosecha(self))
+		wgame.removeVisual(self)
 	}
 	
 	method oroBase() = precio
 	method getNombre() = nombre
 	method setEtapa(_edad) { etapa = _edad }
-	method getImagen() = etapa.getImagen(this)
+	method getImagen() = etapa.getImagen(self)
 }
 
 
