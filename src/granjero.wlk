@@ -8,6 +8,10 @@ object granjero {
 	method oro() {
 		return throw new MethodNotImplemented("oro", self)
 	}
+	
+	method usar(semilla) {
+		throw new MethodNotImplemented("usar", self)
+	}
 
 	method cosecha(cultivo) {
 		throw new MethodNotImplemented("cosecha", self)

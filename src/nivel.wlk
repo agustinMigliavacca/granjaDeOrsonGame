@@ -89,17 +89,12 @@ object nivel {
 	 * 	cual recibe un bloque de código a ejecutar en caso de ser presionada durante el juego. Por ejemplo, si queremos
 	 * 	que mario salte con la tecla 'S':
 	 * 		S.onPressDo{ mario.salta() }
-	 * 
-	 * Si el juego cuenta con algún personaje, se puede configurar para que éste diga algo cuando se presiona una tecla. 
-	 * Para ello las teclas entienden el método 'onPressCharacterSay(bloque)', donde el bloque de código que se pasa por parámetro
-	 * 	debe retornar un string. Por ejemplo:
-	 * 		SPACE.onPressCharacterSay{ "$ " + mario.monedasDeOro() }
 	 */
 	
 		var usador = granjeroVisual
 		
 		A.onPressDo { game.say(granjeroVisual, "Tengo " + granjero.oro() + " monedas de oro") }
-		SPACE.onPressDo { granjeroVisual.elemento().usate(usador) }
+		SPACE.onPressDo { granjeroVisual.usarElemento() }
 		
 		ANY_KEY.onPressDo { usador = granjeroVisual }
 	
@@ -128,8 +123,8 @@ object nivel {
 		}
 		catch e : MethodNotImplemented {
 			arbustoFactory.drawVerticalBlock(5, 7)
-			mensaje = self.mensajeNivel4()
-			log = self.logNivel4()
+			mensaje = self.mensajeNivel5()
+			log = self.logNivel5()
 		}
 		catch e {}
 		
@@ -138,8 +133,8 @@ object nivel {
 		}
 		catch e : MethodNotImplemented {
 			arbustoFactory.drawHorizontalBlock(7, 5)
-			mensaje = self.mensajeNivel3()
-			log = self.logNivel3()
+			mensaje = self.mensajeNivel4()
+			log = self.logNivel4()
 		}
 		catch e {}
 		
@@ -147,6 +142,15 @@ object nivel {
 			granjero.cosecha(null)
 		catch e : MethodNotImplemented {
 			arbustoFactory.drawVerticalBlock(5, 3)
+			mensaje = self.mensajeNivel3()
+			log = self.logNivel3()
+		}
+		catch e {}
+		
+		try 
+			granjeroVisual.usarElemento()
+		catch e : MethodNotImplemented {
+			arbustoFactory.drawHorizontalBlock(3, 5)
 			mensaje = self.mensajeNivel2()
 			log = self.logNivel2()
 		}
@@ -155,7 +159,6 @@ object nivel {
 		try 
 			granjero.oro()
 		catch e : MethodNotImplemented {
-			arbustoFactory.drawHorizontalBlock(3, 5)
 			mensaje = self.mensajeNivel1()
 			log = self.logNivel1()
 		}
@@ -169,21 +172,28 @@ object nivel {
 	
 	method mensajeNivel1() = "Presiona la tecla 'A' para saber cuántas monedas de oro tengo"
 	method logNivel1() = "NIVEL 1
-Haz que el granjero retorne la cantidad de oro que tiene al mandarle el mensaje 'oro()'."
+Haz que el granjero retorne la cantidad de oro que tiene al mandarle el mensaje 'oro()'.
+Si necesitas ayuda con alǵun nivel, puedes pedírsela a Orson presionando la tecla 'H'."
 	
-	method mensajeNivel2() = "Presiona la tecla 'ESPACIO' para usar el elemento que tengas en la mano. Con la espada puedes cosechar los cultivos."
+	method mensajeNivel2() = "Presiona la tecla 'ESPACIO' para usar el elemento que tenga en la mano."
 	method logNivel2() = "NIVEL 2
+Haz que el granjero use el elemento que tenga en la mano.
+Al usar una semilla, ésta se debería plantar. Para eso todas las semillas entienden el mensaje 'plantar()'.
+¡Recuerda que presionando 'H' le pides ayuda a Orson!"
+	
+	method mensajeNivel3() = "Usa la espada para cosechar los cultivos."
+	method logNivel3() = "NIVEL 3
 Haz que el granjero pueda cosechar un cultivo.
 Para cosechar un cultivo basta con enviarle el mensaje 'cosechate()'."
 
-	method mensajeNivel3() = "Riega los cultivos para obtener más oro en la cosecha."
-	method logNivel3() = "NIVEL 3
+	method mensajeNivel4() = "Riega los cultivos para obtener más oro en la cosecha."
+	method logNivel4() = "NIVEL 4
 Haz que el granjero pueda regar un cultivo.
 Al regar un cultivo éste crece. Mientras más crezca, más oro dará cuando se coseche.
 Hacer los cambios necesarios para que, al regar un cultivo, éste aumente en 100 el oro ganado al cosechar."
 
-	method mensajeNivel4() = "Usa los elementos en el granero para aprovecharlos mejor"
-	method logNivel4() = "NIVEL 4
+	method mensajeNivel5() = "Usa los elementos en el granero para aprovecharlos mejor"
+	method logNivel5() = "NIVEL 5
 ¡Es hora de usar el granero para aumentar nuestra capacidad productiva!
 ...."
 }

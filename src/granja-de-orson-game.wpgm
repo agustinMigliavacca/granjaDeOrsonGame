@@ -1,9 +1,8 @@
 import nivel.*
 
-/*
+/* GRANJA DE ORSON
  * Usa las flechas del teclado para mover a Orson. Y la tecla 'H' para pedirle alguna ayuda.
  * Ayúdalo a comprarse un tractor para que pueda salir de la granja.
- * 
  */
 
 program GranjaDeOrsonGame {

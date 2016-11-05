@@ -5,7 +5,7 @@ object granjeroVisual {
 	var posicion = new Position(2,9)
 	var elemento
 	
-	method usarElemento() { elemento.usate(self) }
+	method usarElemento() { granjero.usar(elemento) }
 	
 	method planta(cultivo) {
 		self.restaOro(25)
