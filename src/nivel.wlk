@@ -66,7 +66,7 @@ object nivel {
 		}
 		//	--------------ARBUSTOS--------------
 	
-		var elementos = [bolsa, espada, regadera]
+		var elementos = [semillaEspecial, espada, regadera]
 		
 	 	game.addVisualCharacter(granjeroVisual)
 		

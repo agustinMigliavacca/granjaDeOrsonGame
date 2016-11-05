@@ -12,7 +12,7 @@ class Cultivo {
 
 	method oroGanado() { return 0 }
 	
-	method imagen() { return "semilla.png" }
+	method imagen() { return "parcela.png" }
 
 
 //////////////////////////////////////////////////////////////////////////////////////

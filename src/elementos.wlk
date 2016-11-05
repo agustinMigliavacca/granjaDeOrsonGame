@@ -1,5 +1,14 @@
 import exceptions.*
 import cultivos.*
+import visuales.*
+
+object semillaEspecial inherits Elemento(new Position(2,9), "semilla.png") {
+	method plantar() {
+		game.removeVisual(self)
+		var cultivo = [new Trigo(), new Maiz(), new Tomate()].anyOne()
+		granjeroVisual.posicion().clone().drawElement(cultivo)
+	}
+}
 
 object bolsa inherits Elemento(new Position(2,9), "bolsa.png") {
 
