@@ -118,6 +118,7 @@ object nivel {
 
 	method avance() {
 		var mensaje = "Ya quiero irme de esta granja."
+		var log = ""
 			
 		try {
 			granero.planta(new Maiz())
@@ -127,7 +128,8 @@ object nivel {
 		}
 		catch e : MethodNotImplemented {
 			arbustoFactory.drawVerticalBlock(5, 7)
-			mensaje = self.nivel4()
+			mensaje = self.mensajeNivel4()
+			log = self.logNivel4()
 		}
 		catch e {}
 		
@@ -136,7 +138,8 @@ object nivel {
 		}
 		catch e : MethodNotImplemented {
 			arbustoFactory.drawHorizontalBlock(7, 5)
-			mensaje = self.nivel3()
+			mensaje = self.mensajeNivel3()
+			log = self.logNivel3()
 		}
 		catch e {}
 		
@@ -144,7 +147,8 @@ object nivel {
 			granjero.cosecha(null)
 		catch e : MethodNotImplemented {
 			arbustoFactory.drawVerticalBlock(5, 3)
-			mensaje = self.nivel2()
+			mensaje = self.mensajeNivel2()
+			log = self.logNivel2()
 		}
 		catch e {}
 		
@@ -152,18 +156,34 @@ object nivel {
 			granjero.oro()
 		catch e : MethodNotImplemented {
 			arbustoFactory.drawHorizontalBlock(3, 5)
-			mensaje = self.nivel1()
+			mensaje = self.mensajeNivel1()
+			log = self.logNivel1()
 		}
 		catch e {}
 		
 		H.onPressDo{game.say(granjeroVisual, mensaje)}
+		console.println("******************************************************************************")
+		console.println(log)
+		console.println("******************************************************************************")
 	}
 	
-	method nivel1() = "Presiona la tecla 'A' para saber cuántas monedas de oro tengo."
+	method mensajeNivel1() = "Presiona la tecla 'A' para saber cuántas monedas de oro tengo"
+	method logNivel1() = "NIVEL 1
+Haz que el granjero retorne la cantidad de oro que tiene al mandarle el mensaje 'oro()'."
 	
-	method nivel2() = "Presiona la tecla 'ESPACIO' para usar el elemento que tengas en la mano. Con la espada puedes cosechar los cultivos."
+	method mensajeNivel2() = "Presiona la tecla 'ESPACIO' para usar el elemento que tengas en la mano. Con la espada puedes cosechar los cultivos."
+	method logNivel2() = "NIVEL 2
+Haz que el granjero pueda cosechar un cultivo.
+Para cosechar un cultivo basta con enviarle el mensaje 'cosechate()'."
 
-	method nivel3() = "Riega los cultivos para obtener más oro en la cosecha."
+	method mensajeNivel3() = "Riega los cultivos para obtener más oro en la cosecha."
+	method logNivel3() = "NIVEL 3
+Haz que el granjero pueda regar un cultivo.
+Al regar un cultivo éste crece. Mientras más crezca, más oro dará cuando se coseche.
+Hacer los cambios necesarios para que, al regar un cultivo, éste aumente en 100 el oro ganado al cosechar."
 
-	method nivel4() = "Usa los elementos en el granero para aprovecharlos mejor"
+	method mensajeNivel4() = "Usa los elementos en el granero para aprovecharlos mejor"
+	method logNivel4() = "NIVEL 4
+¡Es hora de usar el granero para aumentar nuestra capacidad productiva!
+...."
 }
